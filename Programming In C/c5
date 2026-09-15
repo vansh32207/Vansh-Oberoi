@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main()
+{
+    int num, original, reverse;
+    int hundreds, tens, units;
+
+    int *pnum = &num;
+    int *poriginal = &original;
+    int *preverse = &reverse;
+    int *phundreds = &hundreds;
+    int *ptens = &tens;
+    int *punits = &units;
+
+    printf("Enter a three-digit integer: ");
+    scanf("%d", pnum);
+
+    if (*pnum < 100 || *pnum > 999)
+    {
+        printf("Please enter a three-digit positive integer.\n");
+        return 0;
+    }
+    *poriginal = *pnum;
+
+    /* Extract digits */
+    *phundreds = *pnum / 100;
+    *ptens = (*pnum / 10) % 10;
+    *punits = *pnum % 10;
+    *preverse = (*punits * 100) +
+                (*ptens * 10) +
+                *phundreds;
+
+    printf(" %d\n", *phundreds);
+    printf("%d\n", *ptens);
+    printf(" %d\n", *punits);
+
+    printf(" %d\n", *poriginal);
+    printf(" %d\n", *preverse);
+    if (*poriginal == *preverse)
+    {
+        printf("The number is a palindrome");
+    }
+    else
+    {
+        printf("The number is not a palindrome");
+    }
+
+    return 0;
+}
